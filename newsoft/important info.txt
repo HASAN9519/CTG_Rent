@@ -1,0 +1,181 @@
+CREATE TABLE users (
+  id int(11) AUTO_INCREMENT PRIMARY KEY ,
+  username varchar(255) UNIQUE,
+  email varchar(255) UNIQUE,
+  password varchar(255) NOT NULL,
+  created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP
+)
+CREATE TABLE posts (
+  id int(11) AUTO_INCREMENT PRIMARY KEY,
+  title VARCHAR(255) ,
+  slug VARCHAR(255)UNIQUE,
+  body TEXT,
+  created_at  TIMESTAMP
+)
+CREATE TABLE comments (
+  id int(11) AUTO_INCREMENT PRIMARY KEY,
+  user_id int(11) ,
+  post_id int(11),   
+  body TEXT,
+  created_at  TIMESTAMP
+)
+CREATE TABLE replies (
+  id int(11) AUTO_INCREMENT PRIMARY KEY,
+  user_id int(11) ,
+  comment_id int(11),   
+  body TEXT,
+  created_at  TIMESTAMP
+)
+
+User name:  
+hasan
+Host name:  
+localhost
+ 
+Password: 12345
+google api : AIzaSyCDf0iM7pcpg2UzzMY0wc5ovrItZmVaLQY
+CREATE TABLE rent_sell (
+  id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id int(11) DEFAULT NULL,
+    
+  name varchar(100) NOT NULL,
+  address varchar(100) NOT NULL,
+  email varchar(100) ,
+  mobileno int(100) NOT NULL,
+  location varchar(100),
+  purpose varchar(100),
+  property_type varchar(100),
+    
+  addate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  published tinyint(1) NOT NULL,	
+  FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE NO ACTION ON UPDATE NO ACTION  
+) 
+
+CREATE TABLE users (
+  id int(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+  username varchar(255) NOT NULL,
+  email varchar(255) NOT NULL,
+  role enum('Author','Admin') DEFAULT NULL,
+  password varchar(255) NOT NULL,
+  created_at timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  updated_at timestamp NULL DEFAULT NULL
+)
+ALTER TABLE posts
+  ADD price int(12) NOT NULL
+    AFTER feature,
+  ADD paytime varchar(50) NOT NULL
+    AFTER price;
+
+CREATE TABLE posts (
+ id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+ user_id int(11) DEFAULT NULL,
+ title varchar(255) NOT NULL,
+ slug varchar(255) NOT NULL UNIQUE,
+
+  post_type	varchar(100),	
+  vandorname varchar(100) NOT NULL,
+  address varchar(100) NOT NULL,
+  email varchar(100) ,
+  mobileno int(100) NOT NULL,
+  location varchar(100) ,
+  bedroom int(100),
+  bathroom int(100),
+  squarefeet int (100),
+  price int(12) NOT NULL,
+  paytime varchar(50) NOT NULL,
+  feature varchar(100) NOT NULL, 
+
+  gmap varchar(300) NOT NULL, 
+
+ image varchar(255) NOT NULL,
+ body text NOT NULL,
+ published tinyint(1) NOT NULL,
+ created_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+ updated_at timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP ,
+ FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE NO ACTION ON UPDATE NO ACTION
+)
+CREATE TABLE topics (
+  id int(11) PRIMARY KEY AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  slug varchar(255) NOT NULL UNIQUE
+)
+CREATE TABLE post_topic (
+  id int(11) PRIMARY KEY AUTO_INCREMENT,
+  post_id int(11)  NOT NULL UNIQUE,
+  topic_id int(11)  NOT NULL
+)
+INSERT INTO topics (id, name, slug) VALUES
+(1, 'Rent', 'Rent'),
+(2, 'Sell', 'Sell')
+
+
+
+CREATE TABLE renter (
+  renterid int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  name varchar(100) NOT NULL,
+  address varchar(100) NOT NULL,
+  email varchar(100) NOT NULL,
+  description varchar(100) NOT NULL,
+  addate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) 
+CREATE TABLE rentor (
+  rentorid int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  rentorname varchar(100) NOT NULL,
+  address varchar(100) NOT NULL,
+  email varchar(100) ,
+  mobileno int(100) NOT NULL,
+  location varchar(100) ,
+  description varchar(100) NOT NULL,
+  addate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) 
+CREATE TABLE seller (
+  sellerid int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  sellername varchar(100) NOT NULL,
+  address varchar(100) NOT NULL,
+  email varchar(100) ,
+  mobileno int(100) NOT NULL,
+  location varchar(100) ,
+  bedroom int(100),
+  bathroom int(100),
+  balcony int(100),
+  squarefeet int (100),
+  feature varchar(100) NOT NULL,
+  addate TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) 
+
+
+function esc(String $value){
+	// bring the global db connect object into function
+	global $conn;
+	// remove empty space sorrounding string
+	$val = trim($value); 
+	$val = mysqli_real_escape_string($conn, $value);
+	return $val;
+}
+
+
+.container {
+	width: 95%;
+	margin: 5px auto 50px;
+	border: 1px solid #BFBCB3;
+	padding: 10px 0px 50px;
+}
+
+ <?php while($row = mysqli_fetch_array($search_result)):?>
+<?php endwhile;?>
+<th>user_id</th>
+						<th>title</th>
+						<th>post_type</th>
+						<td><?php echo $row['user_id'];?></td>
+						<td><?php echo $row['title'];?></td>
+						<td><?php echo $row['post_type'];?></td>
+
+<label >POST TYPE :</label><br>
+						<select style="border: 5px solid DarkSlateGrey;" name="valueToSearch2">
+							<option  value="sell">BUY</option>
+							<option  value="rent">RENT</option>
+						</select> 
+name="featured_image"
+$featured_image = $post['image'];
+
+style="width:100%;vertical-align: middle;"
