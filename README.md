@@ -1,2 +1,2 @@
 # CTG Rent
-House/Flat renting project using 
+House/Flat renting project using PHP
