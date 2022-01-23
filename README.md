@@ -1,2 +1,2 @@
-# rentproject
-house renting
+# CTG Rent
+House/Flat renting project using 
